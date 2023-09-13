@@ -7,13 +7,8 @@ import Class from './pages/class/Class';
 import Login from './pages/login/Login'
 =======
 import Login from './pages/login/Login';
-<<<<<<< HEAD
 import CheckerReg from './pages/checkerReg/CheckerReg'
 
-=======
-import ViewStudent from './pages/student/ViewStudent';
-import Student from './pages/student/Student'
->>>>>>> d9bb9384ccfbfec9ae388dd66f30c25e9c1e1ea4
 
 function App() {
   return (

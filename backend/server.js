@@ -3,7 +3,7 @@ var express = require('express');
 
 const mongoose=require('mongoose')
 
-const studentRoute= require('./routes/student')
+const workoutRoute= require('./routes/student')
 var app = express();  
 
 //middleware
@@ -14,7 +14,7 @@ app.use((req,res, next)=>{
     console.log(req.path, req.method)
     next()
 })
-app.use('/api/students',studentRoute)
+app.use('/api/workouts',workoutRoute)
 
 //connect db
 mongoose.connect(process.env.MONG_URI)
