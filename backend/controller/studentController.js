@@ -4,9 +4,9 @@ const Student=require('../models/Student')
 //create a new student
 
 const createStudent= async (req,res)=>{
-    const {firstName,lastName,email,gender,phoneNumber,dob,parentName,parentEmail,parentPhone}=req.body
+    const {title,load,reps}=req.body
     try{
-        const student= await Student.create({firstName,lastName,email,gender,phoneNumber,dob,parentName,parentEmail,parentPhone})
+        const student= await Student.create({title,load,reps})
         res.status(200).json(student)
     }catch(error){
         res.status(400).json({error : error.message})

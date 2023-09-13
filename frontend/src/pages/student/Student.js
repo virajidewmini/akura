@@ -155,7 +155,17 @@ export default function Form() {
                   autoComplete="Parent's Phone No"
                 />
               </Grid>
-
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
 
             <Button
               type="submit"
