@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/home/Home';
 import Form from './pages/form/Form';
+import Class from './pages/class/Class';
 import Login from './pages/login/Login'
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
           <Route
               exact path="/form" 
               element={<Form/>} 
+          />
+          <Route
+              exact path="/class" 
+              element={<Class/>} 
           />
            <Route
               exact path="/login" 
