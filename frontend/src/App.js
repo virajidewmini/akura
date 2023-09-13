@@ -2,7 +2,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/home/Home';
 import Form from './pages/form/Form';
-import Login from './pages/login/Login'
+import Login from './pages/login/Login';
+import CheckerReg from './pages/checkerReg/CheckerReg'
+
 
 function App() {
   return (
@@ -25,10 +27,18 @@ function App() {
               exact path="/login" 
               element={<Login/>} 
           />
+
            <Route
               exact path="/student" 
               element={<Student/>} 
           />
+
+
+           <Route
+            exact path="/checkerReg"
+            element={<CheckerReg/>}
+          /> 
+
         </Routes>
       </Router>
     </div>
