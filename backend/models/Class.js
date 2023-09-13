@@ -2,43 +2,32 @@ const mongoose= require('mongoose')
 
 const Schema=mongoose.Schema
 
-const studentSchema =new Schema({
-    firstName:{
+const classSchema =new Schema({
+    grade:{
         type: String,
         required: true
     },
-    lastName:{
+    subject:{
         type: String,
         required: true
     },
-    email:{
+    teacherName:{
         type: String,
         required: true
     },
-    gender:{
+    date:{
         type: String,
         required: true
     },
-    phoneNumber:{
+    time:{
         type: String,
         required: true
     },
-    dob:{
-        type: Date,
-        required: true
-    },
-    parentName:{
+    hall:{
         type: String,
         required: true
     },
-    parentEmail:{
-        type: String,
-        required: true
-    },
-    parentPhone:{
-        type: String,
-        required: true
-    },
+
 },{timestamps: true})
 
-module.exports=mongoose.model('Student', studentSchema)
+module.exports=mongoose.model('Class', classSchema)
