@@ -6,6 +6,8 @@ import Class from './pages/class/Class';
 import Login from './pages/login/Login';
 import ViewStudent from './pages/student/ViewStudent';
 import Student  from './pages/student/Student';
+import Teacher from './pages/teacher/Teacher';
+import Checker from './pages/Checker/Checker';
 
 function App() {
   return (
@@ -19,6 +21,14 @@ function App() {
           <Route 
               exact path="/view" 
               element={<ViewStudent/>} 
+          />
+          <Route 
+              exact path="/teacher" 
+              element={<Teacher/>} 
+          />
+          <Route 
+              exact path="/checker" 
+              element={<Checker/>} 
           />
           <Route
               exact path="/form" 
