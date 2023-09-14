@@ -14,7 +14,7 @@ import ViewClass from './pages/class/viewClass'
 import Checkin from './pages/checkin/Checkin'
 import Updatestudent from './pages/student/updateStudent'
 import ViewCheckin from './pages/parent/ViewCheckin'
-import ViewTeacher from './pages/teacher/Teacher'
+import ViewTeacher from './pages/teacher/viewTeacher'
 import UpdateTeacher from './pages/teacher/updateTeacher'
 
 

@@ -251,7 +251,7 @@ export default function Form() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Register
+             Update
             </Button>
 
           </Box>
