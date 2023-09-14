@@ -91,17 +91,17 @@ export default function BasicTable() {
         <TableBody>
           {checkers && checkers.map((checker) => (
             <TableRow
-              key={checker.indexNo}
+              key={checker._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              {/* <TableCell component="th" scope="row">
-                {student.indexNo}
-              </TableCell> */}
+               <TableCell component="th" scope="row">
+                {checker._id}
+              </TableCell> 
               <TableCell align="right">{checker.firstName}</TableCell>
               <TableCell align="right">{checker.lastName}</TableCell>
               <TableCell align="right">{checker.email}</TableCell>
-              <TableCell align="right">{checker.parentName}</TableCell>
-              <TableCell align="right">{checker.parentPhone}</TableCell>
+              <TableCell align="right">{checker.phoneNumber}</TableCell>
+              
               <TableCell align="right"><Button variant="contained" onClick={() => navigate(`/checker/${checker._id}`)}>Update</Button></TableCell>
               <TableCell align="right"><Button variant="contained" onClick={() => handleDelete(checker._id)}>Delete</Button></TableCell> 
           </TableRow>
