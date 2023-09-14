@@ -50,7 +50,7 @@ const deleteClass= async(req,res)=>{
 
     const classes=await Class.findOneAndDelete({_id: id})
 
-    if(!tclasses){
+    if(!classes){
         return res.status(404).json({error:'No such classes'})
     }
     

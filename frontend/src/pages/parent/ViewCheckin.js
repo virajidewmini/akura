@@ -70,7 +70,7 @@ export default function BasicTable() {
         <Grid container spacing={3}>
         <Stack spacing={2}>
           <Typography variant="h3" gutterBottom> Student </Typography>
-          <Button variant="contained" sx={{ marginLeft: "auto" }} onClick={() => navigate('/student')}>Add Student</Button>
+          <Button variant="contained" sx={{ marginLeft: "auto" }}>Contained</Button>
         </Stack>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

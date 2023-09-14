@@ -1,14 +1,15 @@
 const { default: mongoose } = require('mongoose')
+const Checkin = require('../models/Checkin')
 
-const Class=require('../models/Class')
+const Class=require('../models/Checkin')
 
 //create a new teacher
 
-const createClass= async (req,res)=>{
-    const {grade,subject,teacherName,date,time,hall}=req.body
+const createCheckin= async (req,res)=>{
+    const {indexNo,attendence}=req.body
     try{
-        const classes= await Class.create({grade,subject,teacherName,date,time,hall})
-        res.status(200).json(classes)
+        const checkin= await Checkin.create({indexNo,attendence})
+        res.status(200).json(checkin)
     }catch(error){
         res.status(400).json({error : error.message})
     }
@@ -16,71 +17,71 @@ const createClass= async (req,res)=>{
 
 //get all students
 
-const getClasses= async(req,res)=>{
-    const classes=await Class.find({}).sort({createdAt: -1})
+const getCheckins= async(req,res)=>{
+    const checkin=await Checkin.find({}).sort({createdAt: -1})
 
-    res.status(200).json(classes)
+    res.status(200).json(checkin)
 }
 
 //get a single workouts
 
-const getClass = async(req,res)=>{
+const getCheckin = async(req,res)=>{
     const{id}= req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such classes'})
     }
-    const classes=await Class.findById(id)
+    const checkin=await Checkin.findById(id)
 
-    if(!classes){
+    if(!checkin){
         return res.status(404).json({error:'No such classes'})
     }
     
-    res.status(200).json(classes)
+    res.status(200).json(checkin)
 }
 
 //delete workout
 
-const deleteClass= async(req,res)=>{
+const deleteCheckin= async(req,res)=>{
     const{id}= req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such classes'})
     }
 
-    const classes=await Class.findOneAndDelete({_id: id})
+    const checkin=await Checkin.findOneAndDelete({_id: id})
 
-    if(!tclasses){
+    if(!checkin){
         return res.status(404).json({error:'No such classes'})
     }
     
-    res.status(200).json(classes)
+    res.status(200).json(checkin)
 }
 
 //update workout
 
-const updateClass=async(req,res)=>{
+const updateCheckin=async(req,res)=>{
     const{id}= req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such classes'})
     }
 
-    const classes=await Class.findByIdAndUpdate({_id:id},{
+    const checkin=await Checkin.findByIdAndUpdate({_id:id},{
         ...req.body
     })
 
-    if(!classes){
+    if(!checkin){
         return res.status(404).json({error:'No such classes'})
     }
 
-    res.status(200).json(classes)
+    res.status(200).json(checkin)
 }
 
 module.exports={
-    getClass,
-    getClasses,
-    createClass,
-    deleteClass,
-    updateClass
+    getCheckin,
+    getCheckins,
+    createCheckin,
+    deleteCheckin,
+    updateCheckin
 }

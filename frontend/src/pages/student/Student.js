@@ -31,6 +31,7 @@ export default function Form() {
       e.preventDefault();
 
       const student= {indexNo,firstName,lastName,email,gender,phoneNumber,dob,parentName,parentEmail,parentPhone}
+      
 
       const response= await fetch('/api/student',{
         method:'POST',
@@ -44,14 +45,22 @@ export default function Form() {
       if(!response.ok){
           setError(json.error)
       }
-      if(response.ok){
-        setIndexNo('')
-        setFirstName('')
-        setLastName('')
-        setError('')
 
-        console.log(json)
+      const user= {
+        "email": parentEmail,
+        "password": "DefaultUser01@Akura"
       }
+      
+
+      await fetch('/api/user/signup',{
+        method:'POST',
+        body: JSON.stringify(user),
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+
+
 
     }
 
@@ -154,7 +163,7 @@ export default function Form() {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -166,7 +175,7 @@ export default function Form() {
                   value={phoneNumber}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -178,7 +187,7 @@ export default function Form() {
                   value={dob}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth

@@ -3,10 +3,11 @@ const mongoose= require('mongoose')
 const Schema=mongoose.Schema
 
 const checkinSchema =new Schema({
-    index:{
+    indexNo:{
         type: String,
         required: true
     },
+    
 
 },{timestamps: true})
 

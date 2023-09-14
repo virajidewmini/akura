@@ -13,6 +13,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from "react-router-dom";
 
 import image from '../../assets/Login.jpg'
 
@@ -34,35 +35,32 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+  const navigate = useNavigate();
+  
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault()
 
-const [email,setEmail]=useState('')
-const [password,setPassword]=useState('')
+      const login= {email,password}
+      
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
+      const response= await fetch('/api/user/login',{
+        method:'POST',
+        body: JSON.stringify(login),
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+      const json = await response.json()
+      if(response.ok){
+        navigate('/viewStudent')
+      }
+     
+      console.log(email, password)
+    }
 
-async function handleSubmit(event){
-  event.preventDefault()
-  const response = await fetch('/api/login',{
-    method:"POST",
-    headers:{
-      'Content-Type':'application/json',
-    },body:JSON.stringify({
-      email,
-      password
-    })
-  })
-  const json= await response.json()
-  if(response.ok){
-    console.log("Elama Panda");
-  }
-}
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -108,6 +106,8 @@ async function handleSubmit(event){
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e)=>setEmail(e.target.value)}
+                  value={email}
               />
               <TextField
                 margin="normal"
@@ -118,6 +118,8 @@ async function handleSubmit(event){
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=>setPassword(e.target.value)}
+                  value={password}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

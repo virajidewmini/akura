@@ -17,25 +17,25 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Student" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to= {'/viewTeacher'}>
       <ListItemIcon>
         <CastForEducationIcon />
       </ListItemIcon>
       <ListItemText primary="Teacher" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to= {'/viewClass'}>
       <ListItemIcon>
         <ClassIcon/>
       </ListItemIcon>
       <ListItemText primary="Class" />
-    </ListItemButton>
-    <ListItemButton>
+    </ListItemButton >
+    <ListItemButton component={Link} to= {'/viewChecker'}>
       <ListItemIcon>
         <AdminPanelSettingsIcon />
       </ListItemIcon>
       <ListItemText primary="System Users" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to= {'/checkin'}>
       <ListItemIcon>
         <GradingIcon />
       </ListItemIcon>

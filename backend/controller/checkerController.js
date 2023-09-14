@@ -16,7 +16,7 @@ const createChecker= async (req,res)=>{
 //get all students
 
 const getCheckers= async(req,res)=>{
-    const teacher=await Checker.find({}).sort({createdAt: -1})
+    const checker=await Checker.find({}).sort({createdAt: -1})
 
     res.status(200).json(checker)
 }

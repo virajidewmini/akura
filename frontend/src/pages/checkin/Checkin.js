@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -10,9 +10,6 @@ import Button from '@mui/material/Button';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -42,13 +39,10 @@ export default function Form() {
     if(response.ok){
       setIndexNo('')
 
-
       console.log(json)
     }
 
   }
-
-  
 
 
   return (

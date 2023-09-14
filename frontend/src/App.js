@@ -13,9 +13,10 @@ import UpdateChecker from './pages/Checker/updateChecker'
 import ViewClass from './pages/class/viewClass'
 import Checkin from './pages/checkin/Checkin'
 import Updatestudent from './pages/student/updateStudent'
-import ViewTeacher from './pages/teacher/viewTeacher';
+import ViewCheckin from './pages/parent/ViewCheckin'
+import ViewTeacher from './pages/teacher/Teacher'
 import UpdateTeacher from './pages/teacher/updateTeacher'
-import ViewCheckin from './pages/checkin/viewCheckin';
+
 
 
 function App() {
