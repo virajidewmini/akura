@@ -68,6 +68,12 @@ function App() {
            <Route
               exact path="/viewChecker" 
               element={<ViewChecker/>} 
+          /> 
+
+          <Route
+          
+          exact path="updateChecker"
+          element={<updateChecker/>}
           />
 
         </Routes>
