@@ -21,10 +21,6 @@ import Stack from '@mui/material/Stack';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
-// function handleDelete(id) {
-//   // Define the logic for handling the button click here
-//   console.log(`Button clicked for row with id ${id}`);
-// }
 function handleUpdate(id) {
 
 }

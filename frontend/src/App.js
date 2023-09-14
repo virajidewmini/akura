@@ -11,6 +11,7 @@ import Checker from './pages/Checker/Checker';
 import ViewChecker from './pages/Checker/viewChecker'
 import ViewClass from './pages/class/viewClass'
 import Checkin from './pages/checkin/Checkin'
+import Updatestudent from './pages/student/updateStudent'
 
 
 
@@ -29,7 +30,7 @@ function App() {
           />
           <Route 
               exact path="/student/:id" 
-              element={<ViewStudent/>} 
+              element={<Updatestudent/>} 
           />
           <Route 
               exact path="/teacher" 
