@@ -8,6 +8,8 @@ import ViewStudent from './pages/student/ViewStudent';
 import Student  from './pages/student/Student';
 import Teacher from './pages/teacher/Teacher';
 import Checker from './pages/Checker/Checker';
+import CheckerReg from './pages/checkerReg/CheckerReg'
+
 
 function App() {
   return (
@@ -42,10 +44,18 @@ function App() {
               exact path="/login" 
               element={<Login/>} 
           />
+
            <Route
               exact path="/student" 
               element={<Student/>} 
           />
+
+
+           <Route
+            exact path="/checkerReg"
+            element={<CheckerReg/>}
+          /> 
+
         </Routes>
       </Router>
     </div>
