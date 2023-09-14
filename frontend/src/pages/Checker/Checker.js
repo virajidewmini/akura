@@ -98,6 +98,8 @@ export default function Form() {
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  onChange={(e)=>setFirstName(e.target.value)}
+                  value={firstName}
                   autoFocus
                 />
               </Grid>
@@ -109,6 +111,10 @@ export default function Form() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(e)=>setLastName(e.target.value)}
+                  value={lastName}
+                  
+
                 />
               </Grid>
               <Grid item xs={12}>
@@ -119,6 +125,8 @@ export default function Form() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(e)=>setemail(e.target.value)}
+                  value={email}
                 />
               </Grid>
 
@@ -134,6 +142,8 @@ export default function Form() {
                   type="phone number"
                   id="phone number"
                   autoComplete="phone number"
+                  onChange={(e)=>setPhoneNumber(e.target.value)}
+                  value={phoneNumber}
                 />
               </Grid>
 
