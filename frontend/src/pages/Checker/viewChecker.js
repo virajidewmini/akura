@@ -28,10 +28,10 @@ function handleUpdate(id) {
 export default function BasicTable() {
   const navigate = useNavigate();
   
-  const [checkers,setCheckers]= useState(null);
+  const [Checkers,setCheckers]= useState(null);
   useEffect(()=>{
     const fetchChecker = async() => {
-      const response = await fetch('/api/checker/')
+      const response = await fetch('/api/Checker/')
       const json = await response.json();
 
       if(response.ok){
@@ -42,7 +42,7 @@ export default function BasicTable() {
   },[])
 
   const handleDelete =async(id)=>{
-    const response = await fetch('/api/checker/'+id,{
+    const response = await fetch('/api/Checker/'+id,{
       method:"DELETE"
     })
     const json= await response.json()
@@ -89,21 +89,21 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {checkers && checkers.map((checker) => (
+          {Checkers && Checkers.map((Checker) => (
             <TableRow
-              key={checker._id}
+              key={Checker._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
                <TableCell component="th" scope="row">
-                {checker._id}
+                {Checker._id}
               </TableCell> 
-              <TableCell align="right">{checker.firstName}</TableCell>
-              <TableCell align="right">{checker.lastName}</TableCell>
-              <TableCell align="right">{checker.email}</TableCell>
-              <TableCell align="right">{checker.phoneNumber}</TableCell>
+              <TableCell align="right">{Checker.firstName}</TableCell>
+              <TableCell align="right">{Checker.lastName}</TableCell>
+              <TableCell align="right">{Checker.email}</TableCell>
+              <TableCell align="right">{Checker.phoneNumber}</TableCell>
               
-              <TableCell align="right"><Button variant="contained" onClick={() => navigate(`/checker/${checker._id}`)}>Update</Button></TableCell>
-              <TableCell align="right"><Button variant="contained" onClick={() => handleDelete(checker._id)}>Delete</Button></TableCell> 
+              <TableCell align="right"><Button variant="contained" onClick={() => navigate(`/Checker/${Checker._id}`)}>Update</Button></TableCell>
+              <TableCell align="right"><Button variant="contained" onClick={() => handleDelete(Checker._id)}>Delete</Button></TableCell> 
           </TableRow>
           ))}
         </TableBody> 
