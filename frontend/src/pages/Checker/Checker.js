@@ -33,7 +33,7 @@ export default function Checker() {
 
     const response= await fetch('/api/checker',{
       method:'POST',
-      body: JSON.stringify(Checker),
+      body: JSON.stringify(checker),
       headers:{
         'Content-Type':'application/json'
       }
