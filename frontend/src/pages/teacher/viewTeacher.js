@@ -28,14 +28,14 @@ function handleUpdate(id) {
 export default function BasicTable() {
   const navigate = useNavigate();
   
-  const [teacher,setTeacher]= useState(null);
+  const [teachers,setTeachers]= useState(null);
   useEffect(()=>{
     const fetchTeacher = async() => {
       const response = await fetch('/api/teacher/')
       const json = await response.json();
 
       if(response.ok){
-        setTeacher(json)
+        setTeachers(json)
       }
     }
     fetchTeacher();
@@ -91,7 +91,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {teacher && teacher.map((teacher) => (
+          {teachers && teachers.map((teacher) => (
             <TableRow
               key={teacher._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
