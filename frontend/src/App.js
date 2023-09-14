@@ -13,9 +13,9 @@ import UpdateChecker from './pages/Checker/updateChecker'
 import ViewClass from './pages/class/viewClass'
 import Checkin from './pages/checkin/Checkin'
 import Updatestudent from './pages/student/updateStudent'
-//import ViewTeacher from './pages/teacher/viewTeacher';
-//import UpdateTeacher from './pages/teacher/updateTeacher'
-
+import ViewTeacher from './pages/teacher/viewTeacher';
+import UpdateTeacher from './pages/teacher/updateTeacher'
+import ViewCheckin from './pages/checkin/viewCheckin';
 
 
 function App() {
@@ -75,21 +75,25 @@ function App() {
               element={<ViewChecker/>} 
           /> 
 
-          {/* <Route
+          <Route
           
           exact path="updateChecker"
           element={<UpdateChecker/>}
           />
           <Route
               exact path="/viewTeacher" 
-              element={<viewTeacher/>} 
+              element={<ViewTeacher/>} 
           /> 
 
           <Route
           
           exact path="updateTeacher"
-          element={<updateTeacher/>}
-          /> */}
+          element={<UpdateTeacher/>}
+          />
+          <Route
+              exact path="/viewCheckin" 
+              element={<ViewCheckin/>} 
+          /> 
 
         </Routes>
       </Router>
