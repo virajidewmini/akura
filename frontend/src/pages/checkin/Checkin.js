@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -17,14 +18,38 @@ import Footer from '../../components/Footer';
 
 
 export default function Form() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
-      };
+
+  const[indexNo,setIndexNo]=useState('')
+  const[error,setError]=useState(null)
+
+  const handleSubmit =async(e)=>{
+    e.preventDefault();
+
+    const checkin= {indexNo}
+
+    const response= await fetch('/api/checkin',{
+      method:'POST',
+      body: JSON.stringify(checkin),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    const json = await response.json()
+
+    if(!response.ok){
+        setError(json.error)
+    }
+    if(response.ok){
+      setIndexNo('')
+
+
+      console.log(json)
+    }
+
+  }
+
+  
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -69,6 +94,8 @@ export default function Form() {
                   fullWidth
                   id="indexNumber"
                   label="Index Number"
+                  onChange={(e)=>setIndexNo(e.target.value)}
+                  value={indexNo}
                   autoFocus
                 />
               </Grid>
