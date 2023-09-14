@@ -28,6 +28,10 @@ function App() {
               element={<ViewStudent/>} 
           />
           <Route 
+              exact path="/student/:id" 
+              element={<ViewStudent/>} 
+          />
+          <Route 
               exact path="/teacher" 
               element={<Teacher/>} 
           />

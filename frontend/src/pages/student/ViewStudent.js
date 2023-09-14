@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect,useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,6 +17,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -24,11 +26,12 @@ import Footer from '../../components/Footer';
 //   console.log(`Button clicked for row with id ${id}`);
 // }
 function handleUpdate(id) {
-  // Define the logic for handling the button click here
-  console.log(`Button clicked for row with id ${id}`);
+
 }
 
 export default function BasicTable() {
+  const navigate = useNavigate();
+  
   const [students,setStudents]= useState(null);
   useEffect(()=>{
     const fetchStudent = async() => {
@@ -42,12 +45,14 @@ export default function BasicTable() {
     fetchStudent();
   },[])
 
-  const handleDelete =async()=>{
-    const response = await fetch('/api/student/'+students._id,{
+  const handleDelete =async(id)=>{
+    const response = await fetch('/api/student/'+id,{
       method:"DELETE"
     })
     const json= await response.json()
-    if(response.ok){}
+    if(response.ok){
+      console.log("Elama Panda");
+    }
 
   }
 
@@ -104,7 +109,7 @@ export default function BasicTable() {
               <TableCell align="right">{student.gender}</TableCell>
               <TableCell align="right">{student.parentName}</TableCell>
               <TableCell align="right">{student.parentPhone}</TableCell>
-              <TableCell align="right"><Button variant="contained" onClick={() => handleUpdate(student._id)}>Update</Button></TableCell>
+              <TableCell align="right"><Button variant="contained" onClick={() => navigate(`/student/${student._id}`)}>Update</Button></TableCell>
               <TableCell align="right"><Button variant="contained" onClick={() => handleDelete(student._id)}>Delete</Button></TableCell> 
           </TableRow>
           ))}
