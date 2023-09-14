@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,14 +18,48 @@ import Footer from '../../components/Footer';
 
 
 export default function Form() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
-      };
+
+    const[indexNo,setIndexNo]=useState('')
+    const[firstName,setFirstName]=useState('')
+    const[lastName,setLastName]=useState('')
+    const[email,setemail]=useState('')
+    const[gender,setgender]=useState('')
+    const[phoneNumber,setPhoneNumber]=useState('')
+    const[dob,setdob]=useState('')
+    const[parentName,setParentName]=useState('')
+    const[parentEmail,setParentEmail]=useState('')
+    const[parentPhone,setparentPhone]=useState('')
+    const[error,setError]=useState(null)
+
+    const handleSubmit =async(e)=>{
+      e.preventDefault();
+
+      const student= {indexNo,firstName,lastName,email,gender,phoneNumber,dob,parentName,parentEmail,parentPhone}
+
+      const response= await fetch('/api/student',{
+        method:'POST',
+        body: JSON.stringify(student),
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+      const json = await response.json()
+
+      if(!response.ok){
+          setError(json.error)
+      }
+      if(response.ok){
+        setIndexNo('')
+        setFirstName('')
+        setLastName('')
+        setError('')
+
+        console.log(json)
+      }
+
+    }
+
+    
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -61,6 +96,19 @@ export default function Form() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="indexNo"
+                  label="Index No:"
+                  name="IndexNo"
+                  autoComplete="Index Number "
+                  onChange={(e)=>setIndexNo(e.target.value)}
+                  value={indexNo}
+                  autoFocus
+                />
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
@@ -69,7 +117,8 @@ export default function Form() {
                   fullWidth
                   id="firstName"
                   label="First Name"
-                  autoFocus
+                  onChange={(e)=>setFirstName(e.target.value)}
+                  value={firstName}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -80,9 +129,11 @@ export default function Form() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(e)=>setLastName(e.target.value)}
+                  value={lastName}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -90,9 +141,11 @@ export default function Form() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(e)=>setemail(e.target.value)}
+                  value={email}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -100,6 +153,8 @@ export default function Form() {
                   label="Gender"
                   name="gender"
                   autoComplete="gender"
+                  onChange={(e)=>setgender(e.target.value)}
+                  value={gender}
                 />
               </Grid>
 
@@ -111,6 +166,8 @@ export default function Form() {
                   label="Phone No:"
                   name="phoneNo"
                   autoComplete="Phone Number "
+                  onChange={(e)=>setPhoneNumber(e.target.value)}
+                  value={phoneNumber}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,6 +178,8 @@ export default function Form() {
                   label="Date of Birth"
                   name="dob"
                   autoComplete="Date of Birth"
+                  onChange={(e)=>setdob(e.target.value)}
+                  value={dob}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -131,6 +190,8 @@ export default function Form() {
                   label="Parent's Name"
                   name="parentsName"
                   autoComplete="Parent's Name"
+                  onChange={(e)=>setParentName(e.target.value)}
+                  value={parentName}
                 />
               </Grid>
               
@@ -143,6 +204,8 @@ export default function Form() {
                   label="Parent's Email"
                   name="parentsemail"
                   autoComplete="Parent's Email"
+                  onChange={(e)=>setParentEmail(e.target.value)}
+                  value={parentEmail}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -153,17 +216,8 @@ export default function Form() {
                   label="Parent's Phone No"
                   name="parentsNo"
                   autoComplete="Parent's Phone No"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  onChange={(e)=>setparentPhone(e.target.value)}
+                  value={parentPhone}
                 />
               </Grid>
 

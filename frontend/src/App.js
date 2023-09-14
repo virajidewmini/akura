@@ -8,7 +8,10 @@ import ViewStudent from './pages/student/ViewStudent';
 import Student  from './pages/student/Student';
 import Teacher from './pages/teacher/Teacher';
 import Checker from './pages/Checker/Checker';
-import CheckerReg from './pages/checkerReg/CheckerReg'
+import ViewChecker from './pages/Checker/viewChecker'
+import ViewClass from './pages/class/viewClass'
+import Checkin from './pages/checkin/Checkin'
+
 
 
 function App() {
@@ -21,7 +24,7 @@ function App() {
               element={<Home/>} 
           />
           <Route 
-              exact path="/view" 
+              exact path="/viewStudent" 
               element={<ViewStudent/>} 
           />
           <Route 
@@ -32,9 +35,17 @@ function App() {
               exact path="/checker" 
               element={<Checker/>} 
           />
+          <Route 
+              exact path="/checkin" 
+              element={<Checkin/>} 
+          />
           <Route
               exact path="/form" 
               element={<Form/>} 
+          />
+          <Route
+              exact path="/viewClass" 
+              element={<ViewClass/>} 
           />
           <Route
               exact path="/class" 
@@ -49,12 +60,10 @@ function App() {
               exact path="/student" 
               element={<Student/>} 
           />
-
-
            <Route
-            exact path="/checkerReg"
-            element={<CheckerReg/>}
-          /> 
+              exact path="/viewChecker" 
+              element={<ViewChecker/>} 
+          />
 
         </Routes>
       </Router>
