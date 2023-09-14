@@ -28,7 +28,7 @@ function handleUpdate(id) {
 export default function BasicTable() {
   const navigate = useNavigate();
   
-  const [teachers,setTeachers]= useState(null);
+  const [Teachers,setTeachers]= useState(null);
   useEffect(()=>{
     const fetchTeacher = async() => {
       const response = await fetch('/api/teacher/')
@@ -91,23 +91,23 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {teachers && teachers.map((teacher) => (
+          {Teachers && Teachers.map((Teacher) => (
             <TableRow
-              key={teacher._id}
+              key={Teacher._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {teacher._id}
+                {Teacher._id}
               </TableCell>
-              <TableCell align="right">{teacher.firstName}</TableCell>
-              <TableCell align="right">{teacher.lastName}</TableCell>
-              <TableCell align="right">{teacher.email}</TableCell>
-              <TableCell align="right">{teacher.phone}</TableCell>
-              <TableCell align="right">{teacher.address}</TableCell>
-              <TableCell align="right">{teacher.subject}</TableCell>
-              <TableCell align="right">{teacher.grade}</TableCell>
-              <TableCell align="right"><Button variant="contained" onClick={() => navigate(`/teacher/${teacher._id}`)}>Update</Button></TableCell>
-              <TableCell align="right"><Button variant="contained" onClick={() => handleDelete(teacher._id)}>Delete</Button></TableCell> 
+              <TableCell align="right">{Teacher.firstName}</TableCell>
+              <TableCell align="right">{Teacher.lastName}</TableCell>
+              <TableCell align="right">{Teacher.email}</TableCell>
+              <TableCell align="right">{Teacher.phone}</TableCell>
+              <TableCell align="right">{Teacher.address}</TableCell>
+              <TableCell align="right">{Teacher.subject}</TableCell>
+              <TableCell align="right">{Teacher.grade}</TableCell>
+              <TableCell align="right"><Button variant="contained" onClick={() => navigate(`/Teacher/${Teacher._id}`)}>Update</Button></TableCell>
+              <TableCell align="right"><Button variant="contained" onClick={() => handleDelete(Teacher._id)}>Delete</Button></TableCell> 
           </TableRow>
           ))}
         </TableBody> 
