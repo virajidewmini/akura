@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -17,14 +18,42 @@ import Footer from '../../components/Footer';
 
 
 export default function Checker() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
-      };
+
+  const[firstName,setFirstName]=useState('')
+  const[lastName,setLastName]=useState('')
+  const[email,setemail]=useState('')
+  const[phoneNumber,setPhoneNumber]=useState('')
+  const[error,setError]=useState(null)
+
+
+  const handleSubmit =async(e)=>{
+    e.preventDefault();
+
+    const checker= {firstName,lastName,email,phoneNumber}
+
+    const response= await fetch('/api/checker',{
+      method:'POST',
+      body: JSON.stringify(Checker),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    const json = await response.json()
+
+    if(!response.ok){
+        setError(json.error)
+    }
+    if(response.ok){
+      setFirstName('')
+      setLastName('')
+      setError('')
+
+      console.log(json)
+    }
+
+  }
+
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -94,17 +123,7 @@ export default function Checker() {
               </Grid>
 
 
-              {/* <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid> */}
+             
 
                 <Grid item xs={12}>
                 <TextField
