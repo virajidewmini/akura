@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,14 +18,44 @@ import Footer from '../../components/Footer';
 
 
 export default function Form() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
-      };
+  const[grade,setGrade]=useState('')
+  const[subjectName,setSubjectName]=useState('')
+  const[teacherName,setTeacherName]=useState('')
+  const[date,setDate]=useState('')
+  const[time,setTime]=useState('')
+  const[hall,setHall]=useState('')
+  const[error,setError]=useState(null)
+
+  const handleSubmit =async(e)=>{
+    e.preventDefault();
+
+    const Class= {grade,subjectName,teacherName,date,time,hall}
+
+    const response= await fetch('/api/Class',{
+      method:'POST',
+      body: JSON.stringify(Class),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    const json = await response.json()
+
+    if(!response.ok){
+        setError(json.error)
+    }
+    if(response.ok){
+      setGrade('')
+      setSubjectName('')
+      setTeacherName('')
+      setDate('')
+      setTime('')
+      setHall('')
+      setError('')
+
+      console.log(json)
+    }
+
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -69,6 +100,8 @@ export default function Form() {
                   fullWidth
                   id="grade"
                   label="Grade"
+                  onChange={(e)=>setGrade(e.target.value)}
+                  value={grade}
                   autoFocus
                 />
               </Grid>
@@ -80,6 +113,8 @@ export default function Form() {
                   label="Subject Name"
                   name="subjectName"
                   autoComplete="subject-name"
+                  onChange={(e)=>setSubjectName(e.target.value)}
+                  value={subjectName}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -90,6 +125,8 @@ export default function Form() {
                   label="Teacher Name"
                   name="teacherName"
                   autoComplete="teacher-name"
+                  onChange={(e)=>setTeacherName(e.target.value)}
+                  value={teacherName}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -100,6 +137,8 @@ export default function Form() {
                   label="Date"
                   name="date"
                   autoComplete="date"
+                  onChange={(e)=>setDate(e.target.value)}
+                  value={date}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -110,6 +149,8 @@ export default function Form() {
                   label="Time"
                   name="time"
                   autoComplete="time"
+                  onChange={(e)=>setTime(e.target.value)}
+                  value={time}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,14 +162,10 @@ export default function Form() {
                   type="hall"
                   id="hall"
                   autoComplete="hall"
+                  onChange={(e)=>setHall(e.target.value)}
+                  value={hall}
                 />
               </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
             </Grid>
             <Button
               type="submit"
@@ -136,7 +173,7 @@ export default function Form() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Register
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
