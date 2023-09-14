@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -33,14 +34,35 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+const [email,setEmail]=useState('')
+const [password,setPassword]=useState('')
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+
+async function handleSubmit(event){
+  event.preventDefault()
+  const response = await fetch('/api/login',{
+    method:"POST",
+    headers:{
+      'Content-Type':'application/json',
+    },body:JSON.stringify({
+      email,
+      password
+    })
+  })
+  const json= await response.json()
+  if(response.ok){
+    console.log("Elama Panda");
+  }
+}
 
   return (
     <ThemeProvider theme={defaultTheme}>

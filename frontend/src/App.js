@@ -8,11 +8,11 @@ import ViewStudent from './pages/student/ViewStudent';
 import Student  from './pages/student/Student';
 import Teacher from './pages/teacher/Teacher';
 import Checker from './pages/Checker/Checker';
-import ViewChecker from './pages/Checker/viewChecker';
-import ViewClass from './pages/class/viewClass';
-import Checkin from './pages/checkin/Checkin';
-import Updatestudent from './pages/student/updateStudent';
-import UpdateClass from './pages/class/updateClass';
+import ViewChecker from './pages/Checker/viewChecker'
+import UpdateChecker from './pages/Checker/updateChecker'
+import ViewClass from './pages/class/viewClass'
+import Checkin from './pages/checkin/Checkin'
+import Updatestudent from './pages/student/updateStudent'
 
 
 
@@ -65,14 +65,18 @@ function App() {
            <Route
               exact path="/student" 
               element={<Student/>} 
+
           />
-           <Route
+          
+          <Route
               exact path="/viewChecker" 
               element={<ViewChecker/>} 
-          />
+          /> 
+
           <Route
-              exact path="/updateClass" 
-              element={<UpdateClass/>} 
+          
+          exact path="updateChecker"
+          element={<UpdateChecker/>}
           />
 
         </Routes>

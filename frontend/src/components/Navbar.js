@@ -11,7 +11,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import { mainListItems, secondaryListItems } from './ListItems';
+import { mainListItems } from './ListItems';
 
 const drawerWidth = 240;
 
@@ -116,8 +116,6 @@ export default function Navbar() {
                 <Divider />
                 <List component="nav">
                     {mainListItems}
-                    <Divider sx={{ my: 1 }} />
-                    {secondaryListItems}
                 </List>
             </Drawer>
         </Fragment>

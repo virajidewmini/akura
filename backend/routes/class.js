@@ -11,10 +11,10 @@ const {
 const router= express.Router()
 
 //get all workout
-router.get('/',getClass)
+router.get('/',getClasses)
 
 //get single workout
-router.get('/:id',getClasses)
+router.get('/:id',getClass)
 
 //POST a new workout
 router.post('/', createClass)
